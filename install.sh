@@ -33,8 +33,8 @@ if [ "$(uname -m)" = 'arm64' ]; then
     -d \
     --cap-add SYS_PTRACE \
     -p 1433:1433 \
-    -v beeup_db1:/opt/mssql/adoxx_data \
-    -v beeup_db2:/var/opt/mssql/data \
+    -v beeup_db1:/opt/mssql \
+    -v beeup_db2:/var/opt/mssql \
     -e 'ACCEPT_EULA=1' \
     -e 'MSSQL_SA_PASSWORD=12+*ADOxx*+34' \
     mcr.microsoft.com/azure-sql-edge:latest
@@ -59,8 +59,8 @@ else
     --restart unless-stopped \
     -d \
     -p 8080:8080 \
-    -v beeup_db1:/opt/mssql/adoxx_data \
-    -v beeup_db2:/var/opt/mssql/data \
+    -v beeup_db1:/opt/mssql \
+    -v beeup_db2:/var/opt/mssql \
     -v "$(pwd)/pdfs":/home/app/PDF \
     beeup:latest
 fi
